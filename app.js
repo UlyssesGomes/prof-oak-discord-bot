@@ -10,6 +10,8 @@ import {
 import { VerifyDiscordRequest, getRandomEmoji, DiscordRequest } from './utils.js';
 import { getShuffledOptions, getResult } from './game.js';
 import { boostCalculator } from './service/boost/boost-service.js';
+import { heldFusion, heldInfo, heldRemove } from './service/held/held-service.js';
+import { whereIsMerchant } from './service/npc/npc-service.js';
 
 // Create an express app
 const app = express();
@@ -42,14 +44,14 @@ app.post('/interactions', async function (req, res) {
    */
   if (type === InteractionType.APPLICATION_COMMAND) {
     const { name } = data;
-    // "test" command
-    if (name === 'test') {
+  
+    if (name === 'about') {
       // Send a message into the channel where command was triggered from
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           // Fetches a random emoji to send from a helper function
-          content: 'hello world ' + getRandomEmoji(),
+          content: 'This bot was made by Ulysses.\n Email: ulysses.d3v@gmail.com',
         },
       });
     }
@@ -104,6 +106,46 @@ app.post('/interactions', async function (req, res) {
         data: {
           // Fetches a random emoji to send from a helper function
           content: boostCalculator(req, true),
+        },
+      });
+    }
+
+    if(name === 'held-info') {
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: heldInfo(req),
+        },
+      });
+    }
+
+    if(name === 'held-remove') {
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: heldRemove(req),
+        },
+      });
+    }
+
+    if(name === 'held-fusion') {
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: heldFusion(req),
+        },
+      });
+    }
+
+    if(name === 'merchant-today') {
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: whereIsMerchant(),
         },
       });
     }

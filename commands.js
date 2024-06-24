@@ -18,9 +18,9 @@ function createCommandChoices() {
 }
 
 // Simple test command
-const TEST_COMMAND = {
-  name: 'test',
-  description: 'Basic command',
+const ABOUT_COMMAND = {
+  name: 'about',
+  description: 'About this bot.',
   type: 1,
 };
 
@@ -118,6 +118,69 @@ const SPECIAL_BOOST_COMMAND = {
   ],
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, NORMAL_BOOST_COMMAND, SPECIAL_BOOST_COMMAND];
+const HELD_INFO_COMMAND = {
+  name: 'held-info',
+  description: 'Get held info by tier',
+  type: 1,
+  options: [
+    {
+      name: 'name',
+      description: 'Held name.',
+      type: 3,
+      required: true
+    },
+    {
+      name: 'tier',
+      description: 'Held tier.',
+      type: 4,
+      required: true
+    },
+  ]
+};
+
+const HELD_REMOVE_COMMAND = {
+  name: 'held-remove',
+  description: 'Get held remove price by tier.',
+  type: 1,
+  options: [
+    {
+      name: 'tier',
+      description: 'Held tier.',
+      type: 4,
+      required: true
+    },
+  ]
+};
+
+const HELD_FUSION_COMMAND = {
+  name: 'held-fusion',
+  description: 'Get held fusion price by tier that you have.',
+  type: 1,
+  options: [
+    {
+      name: 'tier',
+      description: 'The tier of the 3 helds you have.',
+      type: 4,
+      required: true
+    },
+  ]
+};
+
+const MERCHANT_TODAY_COMMAND = {
+  name: 'merchant-today',
+  description: 'Get today location of npc Merchant.',
+  type: 1,
+};
+
+const ALL_COMMANDS = [
+  ABOUT_COMMAND, 
+  CHALLENGE_COMMAND, 
+  NORMAL_BOOST_COMMAND, 
+  SPECIAL_BOOST_COMMAND, 
+  HELD_INFO_COMMAND, 
+  HELD_REMOVE_COMMAND, 
+  HELD_FUSION_COMMAND, 
+  MERCHANT_TODAY_COMMAND
+];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
