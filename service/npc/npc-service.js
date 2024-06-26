@@ -10,5 +10,5 @@ const npcMerchant = {
 
 export function whereIsMerchant() {
     const date = new Date();
-    return `Today Merchant position is  ${npcMerchant[date.getDay()]}`;
+    return `Today Merchant position is ${npcMerchant[date.getDay()]}`;
 }
