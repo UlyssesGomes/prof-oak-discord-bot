@@ -102,6 +102,18 @@ export function calcExceptionBoost(initBoost, endBoost, boostType, stonePrice, b
     return responseBoost;
 }
 
+function numberShortFormat(value) {
+    if(value >= 1000000) {
+        value = Math.round(value / 1000);
+        value = value / 1000;
+        return `${value}kk`;
+    } else if( value >= 1000) {
+        return `${Math.round(value / 1000)}k`;
+    } else {
+        return value;
+    }
+}
+
 export function boostCalculator(req, isSpecial) {
     const initialBoost = req.body.data.options[0].value;
     const endBoost = req.body.data.options[1].value;
@@ -132,7 +144,7 @@ export function boostCalculator(req, isSpecial) {
 
         let stones = `Total Stones: ${result.normal_stones}\n`;
         let boostStones = `Total Boost Stones: ${result.boost_stones}\n`;
-        let totalPrice = `Total price: $ ${result.price}`;
+        let totalPrice = `Total price: $ ${numberShortFormat(result.price)}`;
 
         response = `For Boost(${boostType}) upgrade from ${initialBoost} to ${endBoost}\n\n`;
         response += result.normal_stones > 0 ? stones : '';

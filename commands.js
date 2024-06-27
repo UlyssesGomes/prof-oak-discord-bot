@@ -172,6 +172,12 @@ const MERCHANT_TODAY_COMMAND = {
   type: 1,
 };
 
+const BOOST_TEST = {
+  name: 'boost-test',
+  description: 'Calculate boost for normal stones like feather, fire, ice...',
+  type: 1,
+}
+
 const ALL_COMMANDS = [
   ABOUT_COMMAND, 
   CHALLENGE_COMMAND, 
@@ -180,7 +186,8 @@ const ALL_COMMANDS = [
   HELD_INFO_COMMAND, 
   HELD_REMOVE_COMMAND, 
   HELD_FUSION_COMMAND, 
-  MERCHANT_TODAY_COMMAND
+  MERCHANT_TODAY_COMMAND,
+  BOOST_TEST
 ];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);

@@ -110,6 +110,74 @@ app.post('/interactions', async function (req, res) {
       });
     }
 
+    // ------------------------------------------------------------------
+    // MODAL TEST IMPLEMENTATION
+    // ------------------------------------------------------------------
+  
+    // if(name === 'boost-test') {
+    //   console.log('recebeu modal...');
+    //   console.log('enviando modal...');
+    //   return res.send({
+    //     type: InteractionResponseType.APPLICATION_MODAL,
+    //     data: {
+    //       custom_id: 'my_modal',
+    //       title: 'Modal title',
+    //       components: [
+    //         {
+    //           // Text inputs must be inside of an action component
+    //           type: MessageComponentTypes.ACTION_ROW,
+    //           components: [
+    //             {
+    //               // See https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-structure
+    //               type: MessageComponentTypes.INPUT_TEXT,
+    //               custom_id: 'my_text',
+    //               style: 1,
+    //               label: 'Type some text',
+    //             },
+    //           ],
+    //         },
+    //         {
+    //           type: MessageComponentTypes.ACTION_ROW,
+    //           components: [
+    //             {
+    //               type: MessageComponentTypes.INPUT_TEXT,
+    //               custom_id: 'my_longer_text',
+    //               // Bigger text box for input
+    //               style: 2,
+    //               label: 'Type some (longer) text',
+    //             },
+    //           ],
+    //         },
+    //       ],
+    //     },
+    //   });
+    // }
+
+    // if (type === InteractionType.APPLICATION_MODAL_SUBMIT) {
+    //   console.log('Recebendo result do modal')
+    //   // custom_id of modal
+    //   const modalId = data.custom_id;
+    //   // user ID of member who filled out modal
+    //   const userId = req.body.member.user.id;
+  
+    //   if (modalId === 'my_modal') {
+    //     console.log('Modal encontrando, gerando resposta do modal.')
+    //     let modalValues = '';
+    //     // Get value of text inputs
+    //     for (let action of data.components) {
+    //       let inputComponent = action.components[0];
+    //       modalValues += `${inputComponent.custom_id}: ${inputComponent.value}\n`;
+    //     }
+  
+    //     return res.send({
+    //       type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+    //       data: {
+    //         content: `<@${userId}> typed the following (in a modal):\n\n${modalValues}`,
+    //       },
+    //     });
+    //   }
+    // }
+
     if(name === 'held-info') {
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
