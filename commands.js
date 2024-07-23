@@ -172,10 +172,22 @@ const MERCHANT_TODAY_COMMAND = {
   type: 1,
 };
 
+const DUKE_TODAY_COMMAND = {
+  name: 'duke-today',
+  description: 'Get today location of npc Duke.',
+  type: 1,
+};
+
 const BOOST_TEST = {
   name: 'boost-test',
   description: 'Calculate boost for normal stones like feather, fire, ice...',
   type: 1,
+}
+
+const PROFESSOR_COMMAND = {
+  name: 'professor-craft',
+  description: 'Show professor craft information.',
+  type: 1
 }
 
 const ALL_COMMANDS = [
@@ -187,6 +199,8 @@ const ALL_COMMANDS = [
   HELD_REMOVE_COMMAND, 
   HELD_FUSION_COMMAND, 
   MERCHANT_TODAY_COMMAND,
+  DUKE_TODAY_COMMAND,
+  PROFESSOR_COMMAND,
   BOOST_TEST
 ];
 

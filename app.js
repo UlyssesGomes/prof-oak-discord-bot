@@ -11,7 +11,8 @@ import { VerifyDiscordRequest, getRandomEmoji, DiscordRequest } from './utils.js
 import { getShuffledOptions, getResult } from './game.js';
 import { boostCalculator } from './service/boost/boost-service.js';
 import { heldFusion, heldInfo, heldRemove } from './service/held/held-service.js';
-import { whereIsMerchant } from './service/npc/npc-service.js';
+import { whereIsDuke, whereIsMerchant } from './service/npc/npc-service.js';
+import { readProfessorCraftFile } from './service/job/professor-service.js';
 
 // Create an express app
 const app = express();
@@ -214,6 +215,27 @@ app.post('/interactions', async function (req, res) {
         data: {
           // Fetches a random emoji to send from a helper function
           content: whereIsMerchant(),
+        },
+      });
+    }
+
+    if(name === 'duke-today') {
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: whereIsDuke(),
+        },
+      });
+    }
+
+    if(name === 'professor-craft') {
+      readProfessorCraftFile();
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: 'look on console.',
         },
       });
     }
